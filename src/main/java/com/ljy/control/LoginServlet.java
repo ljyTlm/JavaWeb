@@ -66,4 +66,19 @@ public class LoginServlet extends HttpServlet {
             请求只发送一次                                       请求要发送两次
             共享request                                        每一次都是新的request
             地址是应用内地址                                     地址可以是任意地址
+    4.jsp九大内置对象
+        （1）request
+        （2）response
+        （3）session
+        （4）application
+        （5）out
+        （6）page
+        （7）pageContext
+        （8）config
+        （9）exception
+    5.jsp四大作用域
+        （1）page作用域
+        （2）request作用域
+        （3）session作用域
+        （4）application作用域
  */
