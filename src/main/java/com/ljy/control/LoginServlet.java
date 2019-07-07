@@ -1,17 +1,14 @@
 package com.ljy.control;
-import javax.annotation.Resource;
-import javax.jws.WebService;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet("/")
 public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+        req.getRequestDispatcher("a.jsp").forward(req, resp);
+
     }
 
     @Override
@@ -55,4 +52,18 @@ public class LoginServlet extends HttpServlet {
             （3）delete 让服务器删除指定url所对应的资源
             （4）options 获取服务器所支持的方法
             （5）connect 把服务器当成跳板 让服务器访问用户访问不了的页面 然后再发给用户 传说中的http代理服务
+    3.请求转发/重定向
+        请求转发（forward）:
+            本质就是页面之间的参数交互， 在执行req.getRequestDispatcher("a.jsp").forward(req, resp);
+            方法时 request不会失效那么下一个页面仍然可以读取request里面的数据
+        重定向（sendRedirect）:
+            又叫间接转发，实际上的原理是两次http请求，第一次请求是当前servlet处理，
+            之后当前servlet调用 response.sendRedirect() 告诉浏览器向另外一个url
+            发出http请求。
+        综合对比：
+            请求转发                                              重定向
+            服务器内部跳转 浏览器的url不会进行改变                  浏览器再次发出请求 url的地址会改变
+            请求只发送一次                                       请求要发送两次
+            共享request                                        每一次都是新的request
+            地址是应用内地址                                     地址可以是任意地址
  */
